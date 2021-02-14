@@ -1,13 +1,16 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    Hello guys
-    <router-view/>
-  </div>
+  <v-app id="app">
+    <Navbar/>
+    <v-main class="blue-grey darken-4">
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
+import Navbar from './components/Navbar'
 export default {
+  components: { Navbar },
   name: 'App'
 }
 </script>
@@ -18,7 +21,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #f2f2f2;
   margin-top: 60px;
 }
 </style>

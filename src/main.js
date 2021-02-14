@@ -4,14 +4,23 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import vuetify from '@/plugins/vuetify'
+import axios from 'axios'
+
+require('@/store/subscriber')
+
+axios.defaults.baseURL = 'http://localhost:8000/api/'
+axios.defaults.withCredentials = true
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  components: { App },
-  template: '<App/>'
+store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
+  (() => new Vue({
+    vuetify,
+    el: '#app',
+    router,
+    store,
+    components: { App },
+    template: '<App/>'
+  }))()
 })
