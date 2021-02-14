@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
+import Ads from '@/views/Ads'
+import Market from '@/views/Market'
 import Dashboard from '@/views/Dashboard'
 import Login from '@/views/auth/Login'
 import Register from '@/views/auth/Register'
@@ -15,6 +17,16 @@ const router = new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/market',
+      name: 'Market',
+      component: Market
+    },
+    {
+      path: '/ads',
+      name: 'Ads',
+      component: Ads
     },
     {
       path: '/login',

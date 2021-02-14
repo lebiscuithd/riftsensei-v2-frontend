@@ -7,25 +7,45 @@
     >
       <v-container class="py-0 fill-height">
         <v-spacer></v-spacer>
-            <template v-if="authenticated">
                 <v-btn
+                    active-class="teal--text text--accent-2"
                     text
                     color="white"
-                    class="mx-2"
+                    class="mx-1"
                     small
-                    @click="signOut"
+                    to="/market"
                 >
-                    signout
+                    market
                 </v-btn>
                 <v-btn
                     active-class="teal--text text--accent-2"
                     text
                     color="white"
-                    class="mx-2"
+                    class="mx-1"
+                    small
+                    to="/ads"
+                >
+                    ads
+                </v-btn>
+            <template v-if="authenticated">
+                <v-btn
+                    active-class="teal--text text--accent-2"
+                    text
+                    color="white"
+                    class="mx-1"
                     small
                     to="/dashboard"
                 >
                     dashboard
+                </v-btn>
+                <v-btn
+                    text
+                    color="white"
+                    class="mx-1"
+                    small
+                    @click="signOut"
+                >
+                    signout
                 </v-btn>
                     <p class="my-auto ml-10">
                         Hi, {{ authuser.username }} !
@@ -44,7 +64,7 @@
                     text
                     color="white"
                     to="/login"
-                    class="mx-2"
+                    class="mx-1"
                     small
                 >
                     login
@@ -54,7 +74,7 @@
                     text
                     color="white"
                     to="/register"
-                    class="mx-2"
+                    class="mx-1"
                     small
                 >
                     register
