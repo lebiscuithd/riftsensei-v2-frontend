@@ -50,6 +50,7 @@
                     <p class="my-auto ml-10">
                         Hi, {{ authuser.username }} !
                     </p>
+                    <p> {{ authuser.wallet }} </p>
                 <v-avatar
                     class="ml-3"
                     color="teal darken-1"

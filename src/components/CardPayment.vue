@@ -19,7 +19,7 @@
 <script>
 import { Card, createToken } from 'vue-stripe-elements-plus'
 import axios from 'axios'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   props: ['product'],
   components: { Card },
@@ -39,6 +39,9 @@ export default {
     })
   },
   methods: {
+    ...mapMutations({
+      addGems: 'auth/SET_WALLET'
+    }),
     errorHandler: function (event) {
       this.errorMessage = event.error ? event.error.message : ''
     },
@@ -47,12 +50,20 @@ export default {
       const response = await axios.post('/checkout', {
         stripeToken: result.token.id,
         amount: product.cost,
+        quantity: product.quantity,
         description: product.quantity + ' gems for ' + this.authuser.email
       })
       if (response.status === 200) {
-        this.success = response.data
+        this.success = response.data.message
+        this.createReceipt(product.id)
+        this.addGems(response.data.newWallet)
       }
-      console.log(response)
+    },
+    createReceipt (id) {
+      axios.post('/receipts', {
+        product_id: id,
+        user_id: this.authuser.id
+      })
     }
   }
 }

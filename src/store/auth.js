@@ -47,6 +47,10 @@ export default {
     },
     SET_AUTHUSER (state, data) {
       state.authuser = data
+    },
+
+    SET_WALLET (state, quantity) {
+      state.authuser.wallet = quantity
     }
   },
 
