@@ -20,17 +20,13 @@
               color="teal accent-2"
             >Credit card informations</v-toolbar>
             <v-card-text>
-              Formulaire CB
+              <CardPayment :product="product" />
             </v-card-text>
             <v-card-actions class="justify-end">
               <v-btn
                 text
                 @click="dialog.value = false"
               >Close</v-btn>
-              <v-btn
-                text
-                @click="purchase(product.cost)"
-              >Purchase</v-btn>
             </v-card-actions>
           </v-card>
         </template>
@@ -41,8 +37,10 @@
 </template>
 
 <script>
+import CardPayment from '../components/CardPayment.vue'
 import { mapGetters, mapActions } from 'vuex'
 export default {
+  components: { CardPayment },
   mounted () {
     this.getProducts()
   },
