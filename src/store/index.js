@@ -1,6 +1,7 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
 import auth from './auth'
+import products from './products'
 
 Vue.use(Vuex)
 
@@ -25,7 +26,8 @@ const mutations = {
 }
 
 const modules = {
-  auth
+  auth,
+  products
 }
 
 // export store module
