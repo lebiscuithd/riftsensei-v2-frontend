@@ -3,35 +3,36 @@
 
   <div v-for="product in products" :key="product.id">
     {{product}}
-<v-dialog
+    <v-btn
+    @click="bundle=product; dialog = true;"
+    color="teal accent-3">
+      order
+    </v-btn>
+  </div>
+
+  <v-dialog
         transition="dialog-bottom-transition"
         max-width="600"
+        v-model="dialog"
+        persistent
       >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            color="teal accent-2"
-            v-bind="attrs"
-            v-on="on"
-          >Order</v-btn>
-        </template>
-        <template v-slot:default="dialog">
           <v-card>
             <v-toolbar
-              color="teal accent-2"
-            >Credit card informations</v-toolbar>
+              color="teal accent-3"
+              class="text-h6"
+            >
+             Credit card information </v-toolbar>
             <v-card-text>
-              <CardPayment :product="product" />
+              <CardPayment :product="bundle" />
             </v-card-text>
             <v-card-actions class="justify-end">
               <v-btn
                 text
-                @click="dialog.value = false"
+                @click="dialog = false"
               >Close</v-btn>
             </v-card-actions>
           </v-card>
-        </template>
       </v-dialog>
-  </div>
 
 </div>
 </template>
@@ -41,6 +42,12 @@ import CardPayment from '../components/CardPayment.vue'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   components: { CardPayment },
+  data () {
+    return {
+      dialog: false,
+      bundle: ''
+    }
+  },
   mounted () {
     this.getProducts()
   },
