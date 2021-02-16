@@ -6,7 +6,9 @@
       dark
     >
       <v-container class="py-0 fill-height">
-        <img src="../assets/proto logo RIFT sensei.png" class="d-none d-md-flex" height="50px" alt="LogoRiftSensei">
+        <router-link to="/">
+          <img src="../assets/proto logo RIFT sensei.png" class="d-none d-md-flex" height="50px" alt="LogoRiftSensei">
+        </router-link>
         <v-spacer></v-spacer>
                 <v-btn
                     active-class="teal--text text--accent-2"

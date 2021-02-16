@@ -1,11 +1,11 @@
 <template>
-  <v-container class="section-container py-0 px-0 mt-15 rounded elevation-5" >
+  <v-container class="section-container py-0 px-0 mt-10 rounded-lg elevation-5" >
     <v-row class="signin">
       <v-col cols="6" class="left d-none d-md-flex">
-        <v-card>
+        <v-card class="roundedlogin">
             <v-img
               :src="require('../../assets/lol_promoart_8.jpg')"
-              class="white--text"
+              class="white--text roundedlogin"
               gradient="to top, rgba(0,0,0,.1), rgba(0,0,0,.5)"
               height="800"
             >
@@ -115,15 +115,18 @@ export default {
   background-color: rgba(39, 41, 40, 0.986);
 }
 .section-container {
-  border: 2px solid rgb(70, 70, 70)
+  border-radius: 15px!important;
+  border: 1px solid rgba(69, 69, 69, 0.986);
 }
 .signin {
     padding: 0;
+    border-radius: 15px!important;
     margin: 0 auto;
     min-height: 600px;
     background-color: rgba(32, 34, 33, 0.986);
 }
 .signin .left {
+      border-radius: 15px!important;
       padding: 0px;
       box-sizing: border-box;
       display: flex;
@@ -138,6 +141,10 @@ export default {
 }
 .routerlink {
   text-decoration: none;
+}
+.roundedlogin {
+  border-radius: 15px!important;
+  background-color: transparent
 }
 
 </style>

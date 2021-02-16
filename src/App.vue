@@ -25,4 +25,5 @@ export default {
 .v-application {
   font-family: 'Roboto', sans-serif;
 }
+
 </style>
