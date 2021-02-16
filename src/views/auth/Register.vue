@@ -15,7 +15,7 @@
       <v-col cols="12" md="6" class="right my-auto">
         <div class="text-left text-h4 font-weight-bold">Sign up</div>
         <div class="text-left grey--text text--lighten-1 text-h6 mb-8">Already a member ?
-          <router-link to="/register" class="routerlink">Sign in
+          <router-link to="/login" class="routerlink">Sign in
           </router-link>
         </div>
   <v-stepper v-model="e1" dark>
@@ -26,7 +26,7 @@
         color="teal"
         class="pl-0"
       >
-        User's info
+        User info
       </v-stepper-step>
 
       <v-divider></v-divider>
@@ -36,7 +36,7 @@
         step="2"
         color="teal"
       >
-        Player's info
+        Player info
       </v-stepper-step>
 
       <v-divider></v-divider>

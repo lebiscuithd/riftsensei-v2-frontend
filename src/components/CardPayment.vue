@@ -9,7 +9,7 @@
             :options="stripeOptions"
             @change="errorHandler($event)"/>
       <div id="card-errors" role="alert" v-text="errorMessage"></div>
-      <v-btn block color="teal accent-3" class="mt-5" @click="pay(product)" :disabled="!valid">Make payment</v-btn>
+      <v-btn block color="teal accent-3 black--text" class="mt-5" @click="pay(product)" :disabled="!valid">pay</v-btn>
       <div v-if="success" class="success--text">{{success}}</div>
     </v-col>
   </v-row>

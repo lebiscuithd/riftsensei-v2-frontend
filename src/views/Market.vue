@@ -15,6 +15,8 @@
         max-width="600"
         v-model="dialog"
         persistent
+        dark
+        background-color="red"
       >
           <v-card>
             <v-toolbar
