@@ -1,22 +1,13 @@
 <template>
     <v-app-bar
       app
-      color="blue-grey darken-4"
+      color="backgroundDark"
       flat
       dark
     >
       <v-container class="py-0 fill-height">
+        <img src="../assets/proto logo RIFT sensei.png" class="d-none d-md-flex" height="50px" alt="LogoRiftSensei">
         <v-spacer></v-spacer>
-                <v-btn
-                    active-class="teal--text text--accent-2"
-                    text
-                    color="white"
-                    class="mx-1"
-                    small
-                    to="/market"
-                >
-                    market
-                </v-btn>
                 <v-btn
                     active-class="teal--text text--accent-2"
                     text
@@ -34,10 +25,38 @@
                     color="white"
                     class="mx-1"
                     small
+                    to="/market"
+                >
+                    market
+                </v-btn>
+                <v-btn
+                    active-class="teal--text text--accent-2"
+                    text
+                    color="white"
+                    class="mx-1 d-none d-md-flex"
+                    small
                     to="/dashboard"
                 >
                     dashboard
                 </v-btn>
+                <v-btn
+                    outlined
+                    color="teal accent-3"
+                    class="disable-events ml-5"
+                    small
+                >
+                    <img class="my-auto mr-2" src="../assets/gem.svg" height="15px" alt=""> {{ authuser.wallet }}
+                </v-btn>
+                    <p class="my-auto ml-5 text-overline d-none d-md-flex ">
+                        Hi, {{ authuser.username }} !
+                    </p>
+                <v-avatar
+                    class="ml-3 d-none d-md-flex"
+                    color="teal darken-1"
+                    size="32"
+                >
+                    <span class="white--text headline">{{ authuser.username[0]}}</span>
+                </v-avatar>
                 <v-btn
                     text
                     color="white"
@@ -45,19 +64,8 @@
                     small
                     @click="signOut"
                 >
-                    signout
+                    <v-icon dense>mdi-logout</v-icon>
                 </v-btn>
-                    <p class="my-auto ml-10">
-                        Hi, {{ authuser.username }} !
-                    </p>
-                    <p> {{ authuser.wallet }} </p>
-                <v-avatar
-                    class="ml-3"
-                    color="teal darken-1"
-                    size="32"
-                >
-                    <span class="white--text headline">{{ authuser.username[0]}}</span>
-                </v-avatar>
             </template>
             <template v-else>
                 <v-btn
@@ -110,4 +118,7 @@ export default {
 </script>
 
 <style scoped>
+.disable-events {
+  pointer-events: none
+}
 </style>

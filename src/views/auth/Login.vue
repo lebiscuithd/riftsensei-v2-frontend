@@ -1,7 +1,24 @@
 <template>
-<v-container fluid>
-        <v-flex xs12 sm8 md4 class="mx-auto">
-            <v-form
+  <v-container class="section-container py-0 px-0 mt-15 rounded elevation-5" >
+    <v-row class="signin">
+      <v-col cols="6" class="left d-none d-md-flex">
+        <v-card>
+            <v-img
+              :src="require('../../assets/lol_promoart_8.jpg')"
+              class="white--text"
+              gradient="to top, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+              height="800"
+            >
+            </v-img>
+          </v-card>
+      </v-col>
+      <v-col cols="12" md="6" class="right my-auto">
+        <div class="text-left text-h4 font-weight-bold">Sign in</div>
+        <div class="text-left grey--text text--lighten-1 text-h6 mb-8">New here ?
+          <router-link to="/register" class="routerlink">Create Account
+          </router-link>
+        </div>
+        <v-form
                 ref="form"
                 v-model="valid"
                 lazy-validation
@@ -38,16 +55,19 @@
                 </v-alert>
                 <v-btn
                 :disabled="!valid"
-                color="teal accent-2"
+                color="primary"
                 class="mr-4 black--text"
                 type="submit"
                 dark
+                large
+                block
                 >
                 Login
                 </v-btn>
             </v-form>
-        </v-flex>
-</v-container>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -94,4 +114,30 @@ export default {
 .v-text-field--outlined >>> fieldset {
   background-color: rgba(39, 41, 40, 0.986);
 }
+.section-container {
+  border: 2px solid rgb(70, 70, 70)
+}
+.signin {
+    padding: 0;
+    margin: 0 auto;
+    min-height: 600px;
+    background-color: rgba(32, 34, 33, 0.986);
+}
+.signin .left {
+      padding: 0px;
+      box-sizing: border-box;
+      display: flex;
+      color: #30ac7c;
+}
+.signin .right {
+      padding: 50px;
+      box-sizing: border-box;
+      color: #fff; }
+.signin .left .right .h2 {
+        margin: 30px 0;
+}
+.routerlink {
+  text-decoration: none;
+}
+
 </style>
