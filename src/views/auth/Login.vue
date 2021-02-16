@@ -143,7 +143,6 @@ export default {
   text-decoration: none;
 }
 .roundedlogin {
-  border-radius: 15px!important;
   background-color: transparent!important;
 }
 
