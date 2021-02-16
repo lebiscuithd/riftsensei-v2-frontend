@@ -174,8 +174,13 @@
         </v-btn>
       </v-stepper-content>
 
-      <v-stepper-content step="3">
-        <h1 class="black--text">STEP 3</h1>
+      <v-stepper-content step="3" class="px-0">
+        <div class="text-left white--text text--lighten-1 text-h5 font-weight-bold mb-4">
+        🎉  Thank you for joining us <b class="primary--text">{{form.username}}</b> !
+        </div>
+         <div class="text-left white--text text--lighten-1 text-h6 mb-15">
+        As a welcome-home gift, you'll receive <b class="primary--text">100 gems <img class="my-auto" src="../../assets/gem.svg" height="18px" alt=""></b> to kickstart your career on RiftSensei !
+        </div>
 
         <v-btn text
         @click="e1 -=1">
@@ -185,10 +190,8 @@
                 :disabled="!valid1"
                 color="primary"
                 class="mr-4 black--text"
-                type="submit"
+                @click="register()"
                 dark
-                large
-                block
                 >
                 Register
                 </v-btn>
