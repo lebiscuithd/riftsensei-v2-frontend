@@ -292,7 +292,7 @@ export default {
 }
 .roundedlogin {
   border-radius: 15px!important;
-  background-color: transparent
+  background-color: transparent!important;
 }
 .routerlink {
   text-decoration: none;
