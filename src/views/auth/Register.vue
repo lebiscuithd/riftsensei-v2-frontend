@@ -1,5 +1,5 @@
 <template>
-  <v-container class="section-container py-0 px-0 mt-10 rounded-lg elevation-5" >
+  <v-container class="section-container py-0 px-0 mt-10 elevation-5" >
     <v-row class="signin">
       <v-col cols="6" class="left d-none d-md-flex">
         <v-card class="roundedlogin">
