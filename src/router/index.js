@@ -7,6 +7,7 @@ import Dashboard from '@/views/Dashboard'
 import Login from '@/views/auth/Login'
 import Register from '@/views/auth/Register'
 import store from '@/store'
+import CreateAd from '@/views/CreateAd'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ const router = new Router({
       name: 'Dashboard',
       component: Dashboard,
       meta: { authOnly: true }
+    },
+    {
+      path: '/createAd',
+      name: 'CreateAd',
+      component: CreateAd
     }
   ]
 })

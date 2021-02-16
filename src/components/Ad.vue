@@ -1,5 +1,6 @@
 <template>
   <div class="mb-7">
+    {{ad}}
     Name : {{ad.coach.username}} <br>
     Verified : {{ad.coach.verified_coach}} <br>
     Rank : {{ad.coach.rank.name}}<img :src="ad.coach.rank.image" alt="" width="50"> <br>
