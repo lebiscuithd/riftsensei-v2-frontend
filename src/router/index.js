@@ -2,11 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
 import Ads from '@/views/Ads'
-import Market from '@/views/Market'
-import Dashboard from '@/views/Dashboard'
-import Login from '@/views/auth/Login'
-import Register from '@/views/auth/Register'
-import store from '@/store'
+import Market from '../views/Market'
+import Dashboard from '../views/Dashboard'
+import Login from '../views/auth/Login'
+import Register from '../views/auth/Register'
+import store from '../store'
+import Messages from '../views/Messages'
 
 Vue.use(Router)
 
@@ -44,6 +45,12 @@ const router = new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
+      meta: { authOnly: true }
+    },
+    {
+      path: '/messages',
+      name: 'Messages',
+      component: Messages,
       meta: { authOnly: true }
     }
   ]

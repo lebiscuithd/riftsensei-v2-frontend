@@ -3,6 +3,7 @@ import Vue from 'vue'
 import auth from './auth'
 import ads from './ads'
 import products from './products'
+import messages from './messages'
 import axios from 'axios'
 
 Vue.use(Vuex)
@@ -50,7 +51,8 @@ const mutations = {
 const modules = {
   auth,
   products,
-  ads
+  ads,
+  messages
 }
 
 // export store module
