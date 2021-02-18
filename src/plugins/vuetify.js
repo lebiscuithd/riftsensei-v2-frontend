@@ -12,7 +12,9 @@ const opts = {
         primary: colors.teal.accent3,
         secondary: '#b0bec5',
         accent: '#8c9eff',
-        backgroundDark: '#191b1c'
+        backgroundDark: '#191b1c',
+        backgroundLight: '#202221',
+        black: '#222222'
       }
     }
   }

@@ -1,15 +1,12 @@
 <template>
   <v-row justify="center">
     <v-col cols="12">
-      <div class="text-h5 mb-5">
-        Give us your payment details: {{product}}
-      </div>
       <card class="stripe-card"
             stripe="pk_test_51IIW3wLera9KqYYc3uYRkdYdjFSMCFB5vzZxLU2Dbr1o2ekWUkYAWkUefStKDnA6nDGfk1JiN29fGoJyq8D5AIS100lbJg4BtA"
             :options="stripeOptions"
             @change="errorHandler($event)"/>
       <div id="card-errors" role="alert" v-text="errorMessage"></div>
-      <v-btn block color="teal accent-3 black--text" class="mt-5" :loading="loading" @click="pay(product)" :disabled="!valid">pay</v-btn>
+      <v-btn block color="teal accent-3 black--text" class="mt-5" :loading="loading" @click="pay(product)" :disabled="!valid">pay {{product.cost}} €</v-btn>
       <div v-if="success" class="success--text">{{success}}</div>
     </v-col>
   </v-row>
@@ -61,6 +58,7 @@ export default {
           this.success = response.data.message
           this.createReceipt(product.id)
           this.addGems(response.data.newWallet)
+          this.$emit('gemsalert', product.quantity)
         }
         this.loading = false
       } catch (e) {

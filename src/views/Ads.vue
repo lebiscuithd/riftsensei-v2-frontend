@@ -1,8 +1,12 @@
 <template>
 <div>
-  <Ad v-for="ad in ads.data" :key="ad.ad.id" :ad="ad"/>
-  <v-btn>Previous</v-btn>
-  <v-btn>Next</v-btn>
+  <v-container class="my-5">
+    <v-row wrap>
+        <Ad v-for="ad in ads.data" :key="ad.ad.id" :ad="ad"/>
+        <v-btn>Previous</v-btn>
+        <v-btn>Next</v-btn>
+    </v-row>
+  </v-container>      
 </div>
 </template>
 

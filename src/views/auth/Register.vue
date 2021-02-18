@@ -164,8 +164,9 @@
           {{lane.name}}
         </v-chip>
       </v-chip-group>
-        <v-btn text
+        <v-btn text class="mr-2"
         @click="e1 -=1">
+        <v-icon>mdi-chevron-left</v-icon>
           Previous step
         </v-btn>
         <v-btn
@@ -185,8 +186,9 @@
         As a welcome-home gift, you'll receive <b class="primary--text">100 gems <img class="my-auto" src="../../assets/gem.svg" height="18px" alt=""></b> to kickstart your career on RiftSensei !
         </div>
 
-        <v-btn text
+        <v-btn text class="mr-2"
         @click="e1 -=1">
+        <v-icon>mdi-chevron-left</v-icon>
           Previous Step
         </v-btn>
                 <v-btn
