@@ -9,7 +9,7 @@ import axios from 'axios'
 
 require('@/store/subscriber')
 
-axios.defaults.baseURL = 'http://localhost:8000/api/'
+axios.defaults.baseURL = 'https://ancient-badlands-05555.herokuapp.com/api/'
 axios.defaults.withCredentials = true
 
 Vue.config.productionTip = false
