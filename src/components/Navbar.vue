@@ -25,16 +25,6 @@
                     active-class="teal--text text--accent-2"
                     text
                     color="white"
-                    class="mx-1"
-                    small
-                    to="/market"
-                >
-                    market
-                </v-btn>
-                <v-btn
-                    active-class="teal--text text--accent-2"
-                    text
-                    color="white"
                     class="mx-1 d-none d-md-flex"
                     small
                     to="/dashboard"
@@ -42,27 +32,40 @@
                     dashboard
                 </v-btn>
                 <v-btn
+                    active-class="teal--text text--accent-2"
+                    text
                     outlined
-                    color="teal accent-3"
-                    class="disable-events ml-5"
+                    color="white"
+                    class="ml-5"
                     small
+                    to="/market"
                 >
                     <img class="my-auto mr-2" src="../assets/gem.svg" height="15px" alt=""> {{ authuser.wallet }}
+                    <v-icon small class="ml-2">mdi-plus-circle</v-icon>
                 </v-btn>
                     <p class="my-auto ml-5 text-overline d-none d-md-flex ">
                         Hi, {{ authuser.username }} !
                     </p>
+                    <v-badge
+                    bordered
+                    bottom
+                    color="primary"
+                    dot
+                    offset-x="10"
+                    offset-y="10"
+                  >
                 <v-avatar
-                    class="ml-3 d-none d-md-flex"
+                    class="ml-3"
                     color="teal darken-1"
                     size="32"
                 >
-                    <span class="white--text headline">{{ authuser.username[0]}}</span>
+                    <span class="white--text headline">{{ authuser.username[0].toUpperCase()}}</span>
                 </v-avatar>
+                    </v-badge>
                 <v-btn
                     text
                     color="white"
-                    class="mx-1"
+                    class="ml-1"
                     small
                     @click="signOut"
                 >
@@ -98,6 +101,10 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
+  data () {
+    return {
+    }
+  },
   computed: {
     ...mapGetters({
       authenticated: 'auth/authenticated',

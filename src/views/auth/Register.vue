@@ -25,6 +25,7 @@
         step="1"
         color="teal"
         class="pl-0"
+        :rules="[()=> step1Rules()]"
       >
         User info
       </v-stepper-step>
@@ -35,6 +36,7 @@
         :complete="e1 > 2"
         step="2"
         color="teal"
+        :rules="[()=> step2Rules()]"
       >
         Player info
       </v-stepper-step>
@@ -55,8 +57,7 @@
                 ref="form"
                 v-model="valid1"
                 lazy-validation
-                @submit.prevent="submit"
-            >
+            > <small v-if="errors.username" class="error--text text-align left mb-1"> {{errors.username[0]}} </small>
                 <v-text-field
                 v-model="form.username"
                 :rules="[usernameRules.required, usernameRules.min, usernameRules.max]"
@@ -66,6 +67,7 @@
                 dark
                 class="pt-3"
                 ></v-text-field>
+                <small v-if="errors.email" class="error--text text-align left mb-1"> {{errors.email[0]}} </small>
                 <v-text-field
                 v-model="form.email"
                 :rules="emailRules"
@@ -74,7 +76,7 @@
                 outlined
                 dark
                 ></v-text-field>
-
+              <small v-if="errors.password" class="error--text text-align left mb-1"> {{errors.password[0]}} </small>
                 <v-text-field
                 v-model="form.password"
                 :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
@@ -137,6 +139,7 @@
           </v-chip-group>
           <div class="text-left white--text text--lighten-1 text-h6 mb-2">
             Which lane(s) do you play ?
+              <small v-if="errors.lane_id" class="error--text text-align left"> Please select one or more lanes </small>
           </div>
         <v-chip-group
         v-model="form.lane_id"
@@ -149,7 +152,7 @@
           :key="lane.id"
           filter
           outlined
-          active-class="primary--text"
+          active-class="yellow--text"
           :value="lane.id"
         >
             <v-avatar class="mr-1">
@@ -161,8 +164,9 @@
           {{lane.name}}
         </v-chip>
       </v-chip-group>
-        <v-btn text
+        <v-btn text class="mr-2"
         @click="e1 -=1">
+        <v-icon>mdi-chevron-left</v-icon>
           Previous step
         </v-btn>
         <v-btn
@@ -182,19 +186,31 @@
         As a welcome-home gift, you'll receive <b class="primary--text">100 gems <img class="my-auto" src="../../assets/gem.svg" height="18px" alt=""></b> to kickstart your career on RiftSensei !
         </div>
 
-        <v-btn text
+        <v-btn text class="mr-2"
         @click="e1 -=1">
+        <v-icon>mdi-chevron-left</v-icon>
           Previous Step
         </v-btn>
                 <v-btn
                 :disabled="!valid1"
                 color="primary"
                 class="mr-4 black--text"
-                @click="register()"
+                @click="submit()"
                 dark
+                :loading="loading"
                 >
                 Register
                 </v-btn>
+                <v-alert
+                  v-if="errors.length > 0"
+                  dense
+                  outlined
+                  border="left"
+                  class="mt-5 mx-16"
+                  transition="scale-transition"
+                  type="error">
+                    Invalid register form
+                </v-alert>
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
@@ -211,6 +227,7 @@ export default {
     show2: false,
     valid1: false,
     e1: 1,
+    loading: false,
     form: {
       username: '',
       email: '',
@@ -238,9 +255,29 @@ export default {
   methods: {
     ...mapActions({
       getRanks: 'getRanks',
-      getLanes: 'getLanes'
+      getLanes: 'getLanes',
+      register: 'auth/register'
     }),
     submit () {
+      this.loading = true
+      this.register(this.form)
+        .then(() => {
+          this.loading = false
+        })
+    },
+    step1Rules () {
+      if (this.errors.username || this.errors.email || this.errors.password) {
+        return false
+      } else {
+        return true
+      }
+    },
+    step2Rules () {
+      if (this.errors.lane_id || this.errors.rank_id) {
+        return false
+      } else {
+        return true
+      }
     }
   },
   mounted () {
@@ -253,7 +290,8 @@ export default {
     },
     ...mapGetters({
       ranks: 'ranks',
-      lanes: 'lanes'
+      lanes: 'lanes',
+      errors: 'auth/errors'
     })
   }
 }
