@@ -15,7 +15,7 @@
         max-width="600"
         v-model="dialog"
         persistent
-        dark
+        primary
         background-color="red"
       >
           <v-card>

@@ -9,7 +9,7 @@
             :options="stripeOptions"
             @change="errorHandler($event)"/>
       <div id="card-errors" role="alert" v-text="errorMessage"></div>
-      <v-btn block color="teal accent-3 black--text" class="mt-5" @click="pay(product)" :disabled="!valid">pay</v-btn>
+      <v-btn block color="teal accent-3 black--text" class="mt-5" :loading="loading" @click="pay(product)" :disabled="!valid">pay</v-btn>
       <div v-if="success" class="success--text">{{success}}</div>
     </v-col>
   </v-row>
@@ -25,6 +25,7 @@ export default {
   data () {
     return {
       success: '',
+      loading: false,
       valid: true,
       complete: false,
       errorMessage: '',
@@ -46,18 +47,24 @@ export default {
       this.errorMessage = event.error ? event.error.message : ''
     },
     async pay (product) {
-      const result = await createToken()
-      const response = await axios.post('/checkout', {
-        stripeToken: result.token.id,
-        amount: product.cost,
-        quantity: product.quantity,
-        description: product.quantity + ' gems for ' + this.authuser.email
-      })
-      if (response.status === 200) {
-        this.success = response.data.message
-        this.createReceipt(product.id)
-        this.addGems(response.data.newWallet)
-        this.valid = false
+      try {
+        this.loading = true
+        const result = await createToken()
+        const response = await axios.post('/checkout', {
+          stripeToken: result.token.id,
+          amount: product.cost,
+          quantity: product.quantity,
+          description: product.quantity + ' gems for ' + this.authuser.email
+        })
+
+        if (response.status === 200) {
+          this.success = response.data.message
+          this.createReceipt(product.id)
+          this.addGems(response.data.newWallet)
+        }
+        this.loading = false
+      } catch (e) {
+        this.loading = false
       }
     },
     createReceipt (id) {
