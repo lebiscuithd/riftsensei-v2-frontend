@@ -26,7 +26,7 @@ export default {
     scrollToBottom () {
       setTimeout(() => {
         this.$refs.feed.scrollTop = this.$refs.feed.scrollHeight - this.$refs.feed.clientHeight
-      }, 500)
+      }, 50)
     }
   },
   watch: {

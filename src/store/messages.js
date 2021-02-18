@@ -21,7 +21,7 @@ export default {
     async sendMessages ({commit}, data) {
       let response = await axios.post('conversation/send', data)
 
-      return commit('SET_MESSAGES', response.data)
+      return commit('SET_MESSAGE', response.data)
     }
   },
 
@@ -31,6 +31,9 @@ export default {
     },
     SET_MESSAGES (state, data) {
       state.messages = data
+    },
+    SET_MESSAGE (state, data) {
+      state.messages.push(data)
     }
   },
 

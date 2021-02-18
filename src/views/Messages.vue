@@ -23,6 +23,10 @@ export default {
     }
   },
   mounted () {
+    this.$echo.private(`messages.${this.authuser.id}`)
+      .listen('NewMessage', (e) => {
+        console.log(e.message())
+      })
     this.getContacts()
   },
   computed: {
@@ -39,6 +43,13 @@ export default {
     startConversationWith (contact) {
       this.getMessages(contact)
       this.selectedContact = contact
+    },
+    handleIncoming (message) {
+      if (this.selectedContact && message.from === this.selectedContact.id) {
+        this.messages.push(message)
+        return
+      }
+      alert(message.text)
     }
   }
 }
