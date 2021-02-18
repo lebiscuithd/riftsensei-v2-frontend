@@ -4,29 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import vuetify from './plugins/vuetify'
+import vuetify from '@/plugins/vuetify'
 import axios from 'axios'
-import VueEcho from 'vue-echo'
-import VuePusher from 'vue-pusher'
 
-require('./store/subscriber')
+require('@/store/subscriber')
 
-axios.defaults.baseURL = 'https://ancient-badlands-05555.herokuapp.com/api/'
+axios.defaults.baseURL = 'http://localhost:8000/api/'
 axios.defaults.withCredentials = true
 
 Vue.config.productionTip = false
-
-Vue.use(VueEcho, {
-  broadcaster: 'pusher',
-  key: 'f3c23fc2e1e0c92fda75'
-})
-Vue.use(VuePusher, {
-  api_key: 'f3c23fc2e1e0c92fda75',
-  options: {
-    cluster: 'eu',
-    encrypted: true
-  }
-})
 
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
   (() => new Vue({

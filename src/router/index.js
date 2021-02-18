@@ -6,15 +6,9 @@ import Market from '@/views/Market'
 import Dashboard from '@/views/Dashboard'
 import Login from '@/views/auth/Login'
 import Register from '@/views/auth/Register'
-import store from '@/store'
 import CreateAd from '@/views/CreateAd'
-import Market from '@/views/Market'
-import Dashboard from '@/views/Dashboard'
-import Login from '@/views/auth/Login'
-import Register from '@/views/auth/Register'
 import store from '@/store'
 import Messages from '@/views/Messages'
-
 
 Vue.use(Router)
 

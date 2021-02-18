@@ -53,14 +53,13 @@
         v-model="dialog"
         persistent
         primary
-        
       >
           <v-card
           dark
           color="blue-grey darken-4"
           class="rounded-lg">
             <v-card-title class="headline mb-5 font-weight-bold">
-          Give us your payment details 
+          Give us your payment details
           <v-spacer></v-spacer>
           <v-chip
             class="ma-2"
@@ -71,7 +70,7 @@
           </v-chip>
             </v-card-title>
             <v-card-text>
-              <CardPayment :product="bundle" v-on:gemsalert="showAlert"/>
+              <CardPayment :product="bundle" @gemsalert="showAlert"/>
             </v-card-text>
             <v-card-actions class="justify-end">
               <v-btn
@@ -94,7 +93,8 @@ export default {
     return {
       dialog: false,
       bundle: '',
-      snackbar: false
+      snackbar: false,
+      alertMessage: ''
     }
   },
   mounted () {
@@ -110,9 +110,9 @@ export default {
     ...mapActions({
       getProducts: 'products/getProducts'
     }),
-    showAlert(quantity) {
+    showAlert (quantity) {
       this.snackbar = true
-      this.alertMessage = quantity + ' gems has been credited.'
+      this.alertMessage = 'Thank you ! ' + quantity + ' gems has been credited on your wallet.'
     }
   }
 }

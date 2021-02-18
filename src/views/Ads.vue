@@ -6,7 +6,7 @@
         <v-btn>Previous</v-btn>
         <v-btn>Next</v-btn>
     </v-row>
-  </v-container>      
+  </v-container>
 </div>
 </template>
 
