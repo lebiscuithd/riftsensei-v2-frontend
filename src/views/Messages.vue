@@ -23,10 +23,12 @@ export default {
     }
   },
   mounted () {
-    this.$echo.private(`messages.${this.authuser.id}`)
-      .listen('NewMessage', (e) => {
-        console.log(e.message())
-      })
+    console.log(this.authuser.id)
+
+    const channel = this.$pusher.subscribe(`messages-${this.authuser.id}`)
+    channel.bind('NewMessage', (e) => {
+      console.log(e)
+    })
     this.getContacts()
   },
   computed: {
