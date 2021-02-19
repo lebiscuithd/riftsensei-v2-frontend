@@ -27,7 +27,7 @@
             dark
             color="teal darken-2"
             active-class="text-blue"
-            @click="getAdsBystatus({status: status, page: page})"
+            @input="getAdsByStatus({status: status, page: page})"
           ></v-pagination>
         </div>
       </template>
