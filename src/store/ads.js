@@ -18,7 +18,8 @@ export default {
 
     async getAdsByStatus ({ commit }, data) {
       if (data.page) {
-        console.log(data.page)
+        let response = await axios.get('/adsbystatus/' + data + '/?page=' + data.page)
+        return commit('SET_ADS', response.data)
       } else {
         let response = await axios.get('/adsbystatus/' + data)
         return commit('SET_ADS', response.data)
