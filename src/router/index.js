@@ -23,7 +23,8 @@ const router = new Router({
     {
       path: '/market',
       name: 'Market',
-      component: Market
+      component: Market,
+      meta: { authOnly: true }
     },
     {
       path: '/ads',
@@ -51,7 +52,8 @@ const router = new Router({
     {
       path: '/createAd',
       name: 'CreateAd',
-      component: CreateAd
+      component: CreateAd,
+      meta: { authOnly: true }
     },
     {
       path: '/messages',
