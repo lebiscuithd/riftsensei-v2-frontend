@@ -22,6 +22,16 @@
                 </v-btn>
             <template v-if="authenticated">
                 <v-btn
+                active-class="teal--text text--accent-2"
+                text
+                color="white"
+                class="mx-1 d-none d-md-flex"
+                small
+                to="/createAd"
+                ><v-icon small class="mr-2">mdi-plus-circle</v-icon>
+                create ad
+                </v-btn>
+                <v-btn
                     active-class="teal--text text--accent-2"
                     text
                     color="white"

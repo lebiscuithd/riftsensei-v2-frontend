@@ -1,5 +1,6 @@
 <template>
-  <v-container class="section-container py-0 px-0 mt-10 elevation-5" >
+  <v-container class="pa-5 mt-10 elevation-5" >
+    <h2 class="mb-4">Create an ad</h2>
         <v-form
           ref="form"
           v-model="valid"

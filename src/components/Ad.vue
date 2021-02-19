@@ -154,6 +154,7 @@ export default {
         this.$router.push('login')
       } else {
         this.bookIt([this.authuser.id, this.ad.ad.id])
+          .then(() => { this.$emit('adalert') })
       }
     }
   }

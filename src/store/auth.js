@@ -73,6 +73,9 @@ export default {
     },
     DELETE_ERRORS (state) {
       state.errors = []
+    },
+    EDIT_WALLET (state, data) {
+      state.authuser.wallet = data
     }
   },
 
